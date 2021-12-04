@@ -11,7 +11,7 @@ $(".user_body td[style*='width: 60px;']").each(function(index, elem) {
     const note = Number($(elem).text())
 	if (note >= 16 && note < 700) {
 		$(elem).css('background-color', 'aqua');
-	} else if (note <= 800 && note < 900) {
+	} else if (note >= 800 && note < 900) {
 		$(elem).css('background-color', 'fuchsia');
 	}
 })
