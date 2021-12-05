@@ -15,3 +15,5 @@ $(".user_body td[style*='width: 60px;']").each(function(index, elem) {
       $(elem).css('background-color', 'aqua');
   } 
 })
+
+// added comment through Working Copy
