@@ -27,9 +27,13 @@ javascript:
 	$(".user_body > ul").remove();
 	$(".user_body table").each(function(index, elem) {
 			for (let i=$(elem).find("tr").length-1; i>1; i--) {
-				const $bpm = $(elem).find("tr:eq(i)").find("td:eq(2)");
+				const genres = ["P&ア","nico","東方","バラ","mai","ゲ&チ"];
+				const txt = $(elem).find("tr").eq(i).find("td").eq(0).text();
+				let n;
+				if (genres.includes(txt)) {n=1;} else {n=0;}
+				const $bpm = $(elem).find("tr").eq(i).find("td").eq(n+1);
 				const BPM = Number($($bpm).text());
-				const $notes = $(elem).find("tr:eq(i)").find("td:eq(3)");
+				const $notes = $(elem).find("tr").eq(i).find("td").eq(n+2);
 				const NOTES = Number($($notes).text());
 				if (BPM >= 140 && BPM < 150) {
 					$($bpm).css("background-color", "lime");
@@ -45,8 +49,9 @@ javascript:
 				} else if (NOTES >= 800 && NOTES < 900) {
 					$($notes).css("background-color", "fuchsia");
 				}
-				/* if ($($bpm).css("background-color") == "#FFFFFF" && $($notes).css("background-color") == "#FFFFFF"){
-					$(elem).find("tr:eq(i)").remove();
-				} */
+				console.log($($bpm).css("background-color"));
+				if ($($bpm).css("background-color") == "rgba(0, 0, 0, 0)" && $($notes).css("background-color") == "rgba(0, 0, 0, 0)"){
+					$(elem).find("tr").eq(i).remove();
+				}
 			}
 	})
